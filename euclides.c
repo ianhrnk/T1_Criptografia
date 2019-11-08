@@ -1,27 +1,37 @@
 #include <stdio.h>
+#include <stdint.h>
 
-void euclides (int a, int b, int *retorno) {
-	
-	if (a % b != 0) {
-		retorno[0] = a;
-		retorno[1] = b;
+void euclides(uint64_t a, uint64_t b, uint64_t A[2][3]) {
+	uint64_t aux = 0;
 
-		
+	while (A[1][0] != 0) {
+		aux = A[1][0] / A[0][0];
 
-		euclides(b, a%b, retorno);
+		for (int i = 0; i < 3; ++i)
+			A[1][i] -= aux * A[0][i];
+
+		if (A[1][0] != 0) {
+			aux = (A[0][0] / A[1][0]);
+			for (int i = 0; i < 3; ++i)
+				A[0][i] -=  aux * A[1][i];
+		}
 	}
-
 }
 
-int main() {
-	int a = 372;
-	int b = 162;
-	int retorno[2];
+int main()
+{
+	uint64_t a = 2305843009213693951;
+	uint64_t b = 2147483647;
+	uint64_t A[2][3] = {b, 1, 0, a, 0 , 1};
 
-	euclides(a, b, retorno);
+	euclides(a, b, A);
+	
 
-	printf("%d\n", retorno[0]);
-	printf("%d\n", retorno[1]);
+	for (int i = 0; i < 2; ++i) {
+		for (int j = 0; j < 3; ++j)
+			printf("%li ", A[i][j]);
+		printf("\n");
+	}
 
 	return 0;
 }
