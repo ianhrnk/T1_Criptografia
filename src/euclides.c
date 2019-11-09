@@ -8,8 +8,8 @@
 // TODO: Inicializar a matriz A
 // A = {n, 1, 0, a, 0, 1}
 // Verificar se y eh negativo. Se sim, somar com o modulo
-void euclides(uint64_t a, uint64_t n, uint64_t A[2][3]) {
-	uint64_t aux = 0;
+void euclides(long int a, long int n, long int A[2][3]) {
+	long int aux = 0;
 
 	while (A[1][0] != 0) {
 		aux = A[1][0] / A[0][0];
