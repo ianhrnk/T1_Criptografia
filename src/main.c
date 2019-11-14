@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 				// Inicializar - Calcular n = pq
 				if (tarefa == 'I') {
 					scanf("%d %d", &p, &q);
-					fabioInicializar(p, q);
+					teodoroInicializar(p, q);
 				}
 
 				// Autenticar - gerar v (publico) e s (privado)
