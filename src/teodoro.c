@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 // Retornar o valor de n?
-void teodoroInicializar(int p, int q) {
-    unsigned long n = p * q;
-	printf("C %u\n", n);
+long int teodoroInicializar(int p, int q) {
+    long int n = p * q;
+	return n;
 }
