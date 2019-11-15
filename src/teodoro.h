@@ -1,6 +1,6 @@
 #ifndef TEODORO
 #define TEODORO
 
-long int teodoroInicializar(int p, int q);
+unsigned long long int teodoroInicializar(unsigned long int, unsigned long int);
 
 #endif
