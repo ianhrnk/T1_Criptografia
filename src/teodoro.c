@@ -1,8 +1,15 @@
 #include "teodoro.h"
+#include "euclides.h"
+#include "num_aleatorio.h"
 #include <stdio.h>
 
-// Retornar o valor de n?
-unsigned long long int teodoroInicializar(unsigned long int p, unsigned long int q) {
-    unsigned long long int n = p * q;
-	return n;
+long int teodoroInicializar(int p, int q)
+{
+	return (long int) p*q;
+}
+
+void teodoroAutenticar(long int n, long int *s, long int *v)
+{
+  *s = gerarNumAleatorio(n);
+  *v = euclides(n, *s);
 }

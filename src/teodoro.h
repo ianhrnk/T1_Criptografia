@@ -1,6 +1,7 @@
 #ifndef TEODORO
 #define TEODORO
 
-unsigned long long int teodoroInicializar(unsigned long int, unsigned long int);
+long int teodoroInicializar(int, int);
+void teodoroAutenticar(long int, long int*, long int*);
 
 #endif
