@@ -57,7 +57,6 @@ int main(int argc, char **argv)
 				if (tarefa == 'I')
 				{
 					scanf("%ld %ld %ld", &n, &s, &v);
-
 					if (fabioIdentificar(n, s, v))
 						printf("C\n");
 					else
