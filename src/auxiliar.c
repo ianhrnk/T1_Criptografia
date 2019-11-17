@@ -1,6 +1,5 @@
 #include "auxiliar.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 long int euclides(long int a, long int b)
 {
@@ -35,20 +34,20 @@ long int euclides(long int a, long int b)
 
 long int gerarNumAleatorio(long int n)
 {
-	long int inicio = 2;
-	int aux;
+  long int inicio = 2;
+  int aux;
 
-	while (inicio < n)
-	{
-		aux = rand() % 2;
+  while (inicio < n)
+  {
+    aux = rand() % 2;
 
-		if (aux == 0)
-			n = (inicio + n) / 2;
-		else
-			inicio = (inicio + n) / 2;
-	}
+    if (aux == 0)
+      n = (inicio + n) / 2;
+    else
+      inicio = (inicio + n) / 2;
+  }
 
-	return inicio;	
+  return inicio;	
 }
 
 void swap(__int128_t* a, __int128_t* b)

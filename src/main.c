@@ -31,9 +31,9 @@ int main(int argc, char **argv)
         // Inicializar - Calcular n = pq
         if (tarefa == 'I')
         {
-        	scanf("%d %d", &p, &q);
-        	n = teodoroInicializar(p, q);
-        	printf("C %ld\n", n);
+          scanf("%d %d", &p, &q);
+          n = teodoroInicializar(p, q);
+          printf("C %ld\n", n);
         }
 
         // Autenticar - gerar v (publico) e s (privado)
