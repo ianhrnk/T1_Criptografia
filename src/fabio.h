@@ -1,6 +1,6 @@
 #ifndef FABIO
 #define FABIO
 
-int fabioIdentificar(unsigned long long int, unsigned long long int, unsigned long long int);
+int fabioIdentificar(long int, long int, long int);
 
 #endif
