@@ -1,11 +1,13 @@
 #include "num_aleatorio.h"
 #include <stdlib.h>
 
-long int gerarNumAleatorio(long int n) {
-	unsigned long inicio = 0;
+long int gerarNumAleatorio(long int n)
+{
+	long int inicio = 0;
 	int aux;
 
-	while (inicio < n) {
+	while (inicio < n)
+	{
 		aux = rand() % 2;
 
 		if (aux == 0)
