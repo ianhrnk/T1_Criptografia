@@ -37,9 +37,18 @@ int main(int argc, char **argv)
 				}
 
 				// Autenticar - gerar v (publico) e s (privado)
-				else if (tarefa == 'A') {
+				else if (tarefa == 'A')
+        {
 					teodoroAutenticar(n, &s, &v);
           printf("C %ld %ld\n", v, s);
+        }
+
+        // Forjar - recebe s e calcula v correspondente
+        else if (tarefa == 'F')
+        {
+          scanf("%ld", &s);
+          v = teodoroForjar(n, s);
+          printf("C %ld\n", v);
         }
 
 				// Terminar
@@ -62,8 +71,11 @@ int main(int argc, char **argv)
 					else
 						printf("E\n");					
 				}
-			}
 
+        // Terminar
+				else if (tarefa == 'T')
+					printf("C\n");
+      }
 			break;
 
 		case 'P':
