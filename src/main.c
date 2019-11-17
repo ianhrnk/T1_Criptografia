@@ -16,30 +16,30 @@
 
 int main(int argc, char **argv)
 {	
-	srand(time(NULL));
-	char tarefa = 'X';
-	int p, q;
+  srand(time(NULL));
+  char tarefa = 'X';
+  int p, q;
   long int n, s, v;
 
-	switch(*argv[1]) 
-	{
-		case 'T':
-			while (tarefa != 'T')
-			{
-				scanf("%c", &tarefa);
+  switch(*argv[1])
+  {
+    case 'T':
+      while (tarefa != 'T')
+      {
+        scanf("%c", &tarefa);
 				
-				// Inicializar - Calcular n = pq
-				if (tarefa == 'I')
-				{
-					scanf("%d %d", &p, &q);
-					n = teodoroInicializar(p, q);
-					printf("C %ld\n", n);
-				}
-
-				// Autenticar - gerar v (publico) e s (privado)
-				else if (tarefa == 'A')
+        // Inicializar - Calcular n = pq
+        if (tarefa == 'I')
         {
-					teodoroAutenticar(n, &s, &v);
+        	scanf("%d %d", &p, &q);
+        	n = teodoroInicializar(p, q);
+        	printf("C %ld\n", n);
+        }
+
+        // Autenticar - gerar v (publico) e s (privado)
+        else if (tarefa == 'A')
+        {
+          teodoroAutenticar(n, &s, &v);
           printf("C %ld %ld\n", v, s);
         }
 
@@ -51,39 +51,39 @@ int main(int argc, char **argv)
           printf("C %ld\n", v);
         }
 
-				// Terminar
-				else if (tarefa == 'T')
-					printf("C\n");
-			}
-			break;
+        // Terminar
+        else if (tarefa == 'T')
+          printf("C\n");
+      }
+      break;
 
-		case 'F':
-			while (tarefa != 'T')
-			{
-				scanf("%c", &tarefa);
+    case 'F':
+      while (tarefa != 'T')
+      {
+        scanf("%c", &tarefa);
 				
-				// Identificar - verificar se n | s^2*v - 1
-				if (tarefa == 'I')
-				{
-					scanf("%ld %ld %ld", &n, &s, &v);
-					if (fabioIdentificar(n, s, v))
-						printf("C\n");
-					else
-						printf("E\n");					
-				}
+        // Identificar - verificar se n | s^2*v - 1
+        if (tarefa == 'I')
+        {
+          scanf("%ld %ld %ld", &n, &s, &v);
+          if (fabioIdentificar(n, s, v))
+            printf("C\n");
+          else
+            printf("E\n");					
+        }
 
         // Terminar
-				else if (tarefa == 'T')
-					printf("C\n");
+        else if (tarefa == 'T')
+          printf("C\n");
       }
-			break;
+      break;
 
-		case 'P':
-			break;
+    case 'P':
+      break;
 
-		case 'E':
-			break;
-	}
+    case 'E':
+      break;
+  }
 
-	return 0;
+  return 0;
 }
