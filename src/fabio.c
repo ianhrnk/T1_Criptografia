@@ -21,3 +21,10 @@ long int fabioIniciar(long int n)
   x = temp;
   return x;
 }
+
+long int fabioPreparar(long int n, long int r)
+{
+  __uint128_t temp = r*r % n;
+  long int x = temp;
+  return x;
+}

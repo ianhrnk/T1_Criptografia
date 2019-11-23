@@ -21,7 +21,7 @@ int main(int argc, char **argv)
   char tarefa = 'X';
   int p, q;
   long int n = -1;
-  long int s, v, x;
+  long int s, v, x, r;
 
   switch(*argv[1])
   {
@@ -88,6 +88,19 @@ int main(int argc, char **argv)
           }
           else
             printf("E\n");           
+        }
+
+        // Preparar - Computar x com r dado.
+        if (tarefa == 'P')
+        {
+          scanf("%ld", &r);
+          if (n != -1)
+          {
+            x = fabioPreparar(n, r);
+            printf("C %ld\n", x);
+          }
+          else
+            printf("E\n");    
         }
 
         // Terminar
