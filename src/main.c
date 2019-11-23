@@ -12,7 +12,9 @@
 
 /*//////////////////////////////////////////////////////////////////
 //  IMPORTANTE: COMENTAR O CODIGO
-//              Caso os argumentos estejam invalidos, deve-se retornar E.
+//              Caso os argumentos estejam invalidos ou nao identificados
+//              deve-se retornar E.
+//              Corrigir excesso de variaveis na main.
 //////////////////////////////////////////////////////////////////*/
 
 int main(int argc, char **argv)
@@ -20,8 +22,7 @@ int main(int argc, char **argv)
   srand(time(NULL));
   char tarefa = 'X';
   int p, q;
-  long int n = -1;
-  long int s, v, x, r;
+  long int n = -1, s = -1, v = -1, x, r;
 
   switch(*argv[1])
   {
@@ -67,7 +68,7 @@ int main(int argc, char **argv)
       while (tarefa != 'T')
       {
         scanf("%c", &tarefa);
-				
+        
         // Identificar - verificar se n | s^2*v - 1
         if (tarefa == 'I')
         {
@@ -87,7 +88,8 @@ int main(int argc, char **argv)
             printf("C %ld\n", x);
           }
           else
-            printf("E\n");           
+            printf("E\n");
+          q = 0;  // Nao respondeu.           
         }
 
         // Preparar - Computar x com r dado.
@@ -100,7 +102,24 @@ int main(int argc, char **argv)
             printf("C %ld\n", x);
           }
           else
-            printf("E\n");    
+            printf("E\n");
+
+          q = 0;  // Nao respondeu.
+        }
+
+        // Responder - Imprimir xb = r se b = 0 | xb = rs (mod n) se b = 1.
+        if (tarefa == 'R')
+        {
+          scanf("%d", &p);
+          
+          if ((p == 0 || p == 1) && n != -1 && !q)
+          {
+            x = fabioResponder(n, s, r, p);
+            q = 1;  // Respondeu.
+            printf("C %ld\n", x);
+          }
+          else
+            printf("E\n");                    
         }
 
         // Terminar

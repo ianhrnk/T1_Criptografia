@@ -11,20 +11,30 @@ int fabioIdentificar(long int n, long int s, long int v)
 long int fabioIniciar(long int n)
 {
   long int r = gerarNumAleatorio(1, n+1);
-  long int x;
-  __uint128_t temp;
-  
+  long int temp;
+
   while (mdc(n, r) != 1)
     r = gerarNumAleatorio(1, n+1);
 
-  temp = r*r % n;
-  x = temp;
-  return x;
+  temp = multMod(r, r, n);
+  return temp;
 }
 
 long int fabioPreparar(long int n, long int r)
 {
-  __uint128_t temp = r*r % n;
-  long int x = temp;
-  return x;
+  long int temp = multMod(r, r, n);
+  return temp;
+}
+
+long int fabioResponder(long int n, long int s, long int r, int b)
+{
+  long int x;
+
+  if (b == 0)
+    return r;
+  else
+  {
+    x = multMod(r, s, n);
+    return x;
+  }  
 }
