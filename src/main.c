@@ -84,7 +84,7 @@ int main(int argc, char **argv)
         {
           if (n != -1)
           {
-            x = fabioIniciar(n, r);
+            x = fabioIniciar(n, &r);
             printf("C %ld\n", x);
           }
           else
@@ -194,6 +194,36 @@ int main(int argc, char **argv)
       break;
 
     case 'E':
+      while (tarefa != 'T')
+      {
+        scanf("%c", &tarefa);
+        
+        // Inicializar - recebe n e v.
+        if (tarefa == 'I')
+        {
+          scanf("%ld %ld", &n, &v);
+          printf("C\n");
+        }
+
+        // Preparar
+        if (tarefa == 'P')
+        {
+          scanf("%d", &b);
+          esterPreparar(n, s, v, b, &x, &xb);
+          printf("C %ld %ld\n", x, xb);
+        }
+
+        // Sorte
+        if (tarefa == 'S')
+        {
+          scanf("%ld %ld", &r, &xb);
+          //TODO: Terminar de implementar        
+        }        
+
+        // Terminar
+        else if (tarefa == 'T')
+          printf("C\n");
+      }
       break;
   }
 
