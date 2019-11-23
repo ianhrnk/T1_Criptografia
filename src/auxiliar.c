@@ -58,14 +58,12 @@ void swap(__int128_t* a, __int128_t* b)
 
 int mdc(long int a, long int b)
 {
-  long int temp;
-
-  while (a == 0 || b == 0)
+  while (a != 0 & b != 0)
   {
     a -= (a / b) * b;
-    temp = a;
-    a = b;
-    b = temp;
+
+    if (a != 0 & b != 0)
+      b -= (b / a) * a;
   }
 
   if (a == 0)
@@ -74,12 +72,20 @@ int mdc(long int a, long int b)
     return a;  
 }
 
+long int multMod(long int a, long int b, long int n)
+{
+  __uint128_t temp = a % n;
+  temp *= b;
+  temp %= n;
+  return (long int)temp;
+}
+
 int verificarCongruencia(long int n, long int s, long int v)
 {
-  __uint128_t temp = s*s % n;
-  temp *= v;
+  __uint128_t temp = multMod(s, s, n);
+  temp = multMod(temp, v, n);
   temp -= 1;
-
+  
   if (temp % n == 0)
       return 1;
   return 0;

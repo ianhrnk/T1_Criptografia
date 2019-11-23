@@ -8,9 +8,11 @@ long int euclides(long int, long int);
 long int gerarNumAleatorio(long int, long int);
 // Função de troca.
 void swap(__int128_t*, __int128_t*);
-// Retorna o mdc(a,b) | (a >= b)
+// Retorna o mdc(a,b) | Obs: (a >= b)
 int mdc(long int, long int);
+// Calcula a*b mod n. Usado em fabio.c e na funcao verificarCongruencia.
+long int multMod(long int, long int, long int);
 // Verifica se s^2*v é congruente a 1 mod n.
-int verificarCongruencia(long int, long int, long int); 
+int verificarCongruencia(long int, long int, long int);
 
 #endif
