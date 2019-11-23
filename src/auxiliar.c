@@ -32,22 +32,21 @@ long int euclides(long int a, long int b)
   }
 }
 
-long int gerarNumAleatorio(long int n)
+long int gerarNumAleatorio(long int a, long int n)
 {
-  long int inicio = 2;
-  int aux;
+  int temp;
 
-  while (inicio < n)
+  while (a < n)
   {
-    aux = rand() % 2;
+    temp = rand() % 2;
 
-    if (aux == 0)
-      n = (inicio + n) / 2;
+    if (temp == 0)
+      n = (a + n) / 2;
     else
-      inicio = (inicio + n) / 2;
+      a = (a + n) / 2;
   }
 
-  return inicio;	
+  return a;	
 }
 
 void swap(__int128_t* a, __int128_t* b)
@@ -55,4 +54,33 @@ void swap(__int128_t* a, __int128_t* b)
   __int128_t temp = *a;
   *a = *b;
   *b = temp;
+}
+
+int mdc(long int a, long int b)
+{
+  long int temp;
+
+  while (a == 0 || b == 0)
+  {
+    a -= (a / b) * b;
+    temp = a;
+    a = b;
+    b = temp;
+  }
+
+  if (a == 0)
+    return b;
+  else
+    return a;  
+}
+
+int verificarCongruencia(long int n, long int s, long int v)
+{
+  __uint128_t temp = s*s % n;
+  temp *= v;
+  temp -= 1;
+
+  if (temp % n == 0)
+      return 1;
+  return 0;
 }
