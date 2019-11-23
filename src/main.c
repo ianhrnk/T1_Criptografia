@@ -21,8 +21,8 @@ int main(int argc, char **argv)
 {	
   srand(time(NULL));
   char tarefa = 'X';
-  int p, q;
-  long int n = -1, s = -1, v = -1, x, r;
+  int p, q = 0, t, b, i;
+  long int n = -1, s = -1, v = -1, x, r, xb;
 
   switch(*argv[1])
   {
@@ -84,7 +84,7 @@ int main(int argc, char **argv)
         {
           if (n != -1)
           {
-            x = fabioIniciar(n);
+            x = fabioIniciar(n, r);
             printf("C %ld\n", x);
           }
           else
@@ -114,9 +114,9 @@ int main(int argc, char **argv)
           
           if ((p == 0 || p == 1) && n != -1 && !q)
           {
-            x = fabioResponder(n, s, r, p);
+            xb = fabioResponder(n, s, r, p);
             q = 1;  // Respondeu.
-            printf("C %ld\n", x);
+            printf("C %ld\n", xb);
           }
           else
             printf("E\n");                    
@@ -129,6 +129,68 @@ int main(int argc, char **argv)
       break;
 
     case 'P':
+      while (tarefa != 'T')
+      {
+        scanf("%c", &tarefa);
+        
+        // Inicializar - recebe n, v, t | 3 <= t <= 50
+        if (tarefa == 'I')
+        {
+          scanf("%ld %ld %d", &n, &v, &t);
+          i = t;
+          if (t < 3 || t > 50)
+            printf("E\n");
+          else          
+            printf("C\n");
+        }
+
+        // Receber compromisso - recebe x e gera um bit aleatorio
+        if (tarefa == 'Q')
+        {
+          scanf("%ld", &x);
+
+          if (!q) // Se nao recebeu.
+          {
+            p = patriciaRCompromisso();
+            q = 1;
+            printf("C %d\n", p);
+          }
+          else
+            printf("E\n");          
+        }
+
+        // Validar resposta 
+        if (tarefa == 'V')
+        {
+          scanf("%ld", &xb);
+          i--;
+          if (patriciaValidar(xb, x, v, n, p))
+            printf("C %d\n", i);
+          else
+            printf("E %d\n", i);     
+          q = 0;  // Nao recebeu.   
+        }
+
+        // Testar compromisso
+        if (tarefa == 'C')
+        {
+          scanf("%ld %d %ld", &x, &p, &xb);
+          if (patriciaValidar(xb, x, v, n, p))
+          {
+            i--;
+            printf("C %d\n", i);
+          }
+          else
+          {
+            printf("E %d\n", i);
+            i = t;
+          }
+        }
+
+        // Terminar
+        else if (tarefa == 'T')
+          printf("C\n");
+      }
       break;
 
     case 'E':

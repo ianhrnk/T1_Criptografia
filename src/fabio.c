@@ -8,9 +8,9 @@ int fabioIdentificar(long int n, long int s, long int v)
   return 0;
 }
 
-long int fabioIniciar(long int n)
+long int fabioIniciar(long int n, long int r)
 {
-  long int r = gerarNumAleatorio(1, n+1);
+  r = gerarNumAleatorio(1, n+1);
   long int temp;
 
   while (mdc(n, r) != 1)
