@@ -19,5 +19,5 @@ long int teodoroForjar(long int n, long int s)
   if (verificarCongruencia(n, s, temp))
     return temp;
   else
-    return 0;  
+    return 0;
 }
