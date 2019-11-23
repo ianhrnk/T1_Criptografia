@@ -12,6 +12,7 @@
 
 /*//////////////////////////////////////////////////////////////////
 //  IMPORTANTE: COMENTAR O CODIGO
+//              Caso os argumentos estejam invalidos, deve-se retornar E.
 //////////////////////////////////////////////////////////////////*/
 
 int main(int argc, char **argv)
@@ -19,7 +20,8 @@ int main(int argc, char **argv)
   srand(time(NULL));
   char tarefa = 'X';
   int p, q;
-  long int n, s, v;
+  long int n = -1;
+  long int s, v, x;
 
   switch(*argv[1])
   {
@@ -48,7 +50,11 @@ int main(int argc, char **argv)
         {
           scanf("%ld", &s);
           v = teodoroForjar(n, s);
-          printf("C %ld\n", v);
+
+          if (v != 0)
+            printf("C %ld\n", v);
+          else
+            printf("E\n");          
         }
 
         // Terminar
@@ -70,6 +76,18 @@ int main(int argc, char **argv)
             printf("C\n");
           else
             printf("E\n");					
+        }
+
+        // Iniciar - Gerar r e computar x.
+        if (tarefa == 'X')
+        {
+          if (n != -1)
+          {
+            x = fabioIniciar(n);
+            printf("C %ld\n", x);
+          }
+          else
+            printf("E\n");           
         }
 
         // Terminar

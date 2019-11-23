@@ -1,12 +1,23 @@
 #include "fabio.h"
+#include "auxiliar.h"
 
 int fabioIdentificar(long int n, long int s, long int v)
 {
-    __uint128_t temp = s*s % n;
-    temp *= v;
-    temp -= 1;
+  if (verificarCongruencia(n, s, v))
+    return 1;
+  return 0;
+}
 
-    if (temp % n == 0)
-        return 1;
-    return 0;
+long int fabioIniciar(long int n)
+{
+  long int r = gerarNumAleatorio(1, n+1);
+  long int x;
+  __uint128_t temp;
+  
+  while (mdc(n, r) != 1)
+    r = gerarNumAleatorio(1, n+1);
+
+  temp = r*r % n;
+  x = temp;
+  return x;
 }
