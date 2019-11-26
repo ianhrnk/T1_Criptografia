@@ -14,5 +14,9 @@ int mdc(long int, long int);
 long int multMod(long int, long int, long int);
 // Verifica se s^2*v é congruente a 1 mod n.
 int verificarCongruencia(long int, long int, long int);
+// Gera r e calcula x a partir de r e n.
+int calculaX(long int, long int*, long int*);
+// Calcula xb
+int calculaXB(long int*, long int, long int, long int, int);
 
 #endif

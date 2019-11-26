@@ -36,10 +36,13 @@ int main(int argc, char **argv)
 				
         if (tarefa == 'I')
           teodoroInicializar(&n);
+          
         else if (tarefa == 'A')
           teodoroAutenticar(n, &s, &v);
+
         else if (tarefa == 'F')
           teodoroForjar(n, &v);
+
         else if (tarefa == 'T')
           printf("C\n");
       }
@@ -52,41 +55,36 @@ int main(int argc, char **argv)
         
         if (tarefa == 'I')
           fabioIdentificar(&n, &s, &v);
+
         else if (tarefa == 'X')
         {
           fabioIniciar(n, &r, &x);
           q = 0;  // Nao respondeu.           
         }
+
         else if (tarefa == 'P')
         {
           fabioPreparar(n, &r, &x);  
           q = 0;  // Nao respondeu.
         }
+
         else if (tarefa == 'R')
-          q = fabioResponder(n, s, r, q);
+          fabioResponder(&xb, n, s, r, &q);
+
         else if (tarefa == 'T')
           printf("C\n");
       }
       break;
-
+    /*
     case 'P':
       while (tarefa != 'T')
       {
         scanf("%c", &tarefa);
         
-        // Inicializar - recebe n, v, t | 3 <= t <= 50
         if (tarefa == 'I')
-        {
-          scanf("%ld %ld %d", &n, &v, &t);
-          i = t;
-          if (t < 3 || t > 50)
-            printf("E\n");
-          else          
-            printf("C\n");
-        }
+          patriciaInicializar(&n, &v, &t, &i);
 
-        // Receber compromisso - recebe x e gera um bit aleatorio
-        if (tarefa == 'Q')
+        else if (tarefa == 'Q')
         {
           scanf("%ld", &x);
 
@@ -101,7 +99,7 @@ int main(int argc, char **argv)
         }
 
         // Validar resposta 
-        if (tarefa == 'V')
+        else if (tarefa == 'V')
         {
           scanf("%ld", &xb);
           i--;
@@ -113,7 +111,7 @@ int main(int argc, char **argv)
         }
 
         // Testar compromisso
-        if (tarefa == 'C')
+        else if (tarefa == 'C')
         {
           scanf("%ld %d %ld", &x, &p, &xb);
           if (patriciaValidar(xb, x, v, n, p))
@@ -133,32 +131,24 @@ int main(int argc, char **argv)
           printf("C\n");
       }
       break;
-    /*
+    
     case 'E':
       while (tarefa != 'T')
       {
         scanf("%c", &tarefa);
-        
-        // Inicializar - recebe n e v.
+      
         if (tarefa == 'I')
-        {
-          scanf("%ld %ld", &n, &v);
-          printf("C\n");
-        }
+          esterInicializar(&n, &v);
 
-        // Preparar
-        if (tarefa == 'P')
-        {
-          scanf("%d", &b);
-          esterPreparar(n, s, v, b, &x, &xb);
-          printf("C %ld %ld\n", x, xb);
-        }
+        else if (tarefa == 'P')
+          esterPreparar(&bit, &x, &xb);
 
-        // Sorte
-        if (tarefa == 'S')
+        else if (tarefa == 'S')
         {
           scanf("%ld %ld", &r, &xb);
-          //TODO: Terminar de implementar        
+          //TODO: Terminar de implementar
+          // gerar numeros que passem no teste de verificação
+          // da Patricia. (x | v*s² - x)        
         }        
 
         // Terminar

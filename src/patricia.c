@@ -1,6 +1,17 @@
+#include <stdio.h>
 #include <stdlib.h> 
 #include "patricia.h"
 #include "auxiliar.h"
+
+void patriciaInicializar(long int* n, long int* v, int* t, int* i)
+{
+  scanf("%ld %ld %d", n, v, t);
+  *i = *t;
+  if (*t < 3 || *t > 50)
+    printf("E\n");
+  else          
+    printf("C\n");
+}
 
 int patriciaRCompromisso(void)
 {

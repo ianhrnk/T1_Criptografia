@@ -90,3 +90,33 @@ int verificarCongruencia(long int n, long int s, long int v)
       return 1;
   return 0;
 }
+
+int calculaX(long int n, long int* r, long int* x)
+{
+  if (n == -1)
+    return 0;
+  else
+  {
+    *r = gerarNumAleatorio(1, n+1);
+
+    while (mdc(n, *r) != 1)
+      *r = gerarNumAleatorio(1, n+1);
+
+    *x = multMod(*r, *r, n);
+    return 1;
+  }  
+}
+
+int calculaXB(long int *xb, long int n, long int s, long int r, int bit)
+{
+  if (bit == 0 || bit == 1)
+  {
+    if (bit == 0)
+      *xb = r;
+    else
+      *xb = multMod(r, s, n);
+    return 1;
+  }
+
+  return 0;
+}

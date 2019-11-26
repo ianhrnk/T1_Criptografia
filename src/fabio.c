@@ -13,18 +13,10 @@ void fabioIdentificar(long int* n, long int* s, long int* v)
 
 void fabioIniciar(long int n, long int* r, long int* x)
 {
-  if (n == -1)
-    printf("E\n");
-  else
-  {
-    *r = gerarNumAleatorio(1, n+1);
-
-    while (mdc(n, *r) != 1)
-      *r = gerarNumAleatorio(1, n+1);
-
-    *x = multMod(*r, *r, n);
+  if (calculaX(n, r, x))
     printf("C %ld\n", *x);
-  }   
+  else
+    printf("E\n");
 }
 
 void fabioPreparar(long int n, long int* r, long int* x)
@@ -40,25 +32,18 @@ void fabioPreparar(long int n, long int* r, long int* x)
   }
 }
 
-int fabioResponder(long int n, long int s, long int r, int q)
+int fabioResponder(long int* xb, long int n, long int s, long int r, int* q)
 {
-  long int xb;
   int bit;
-  scanf("%d", &bit);
-
-  if ((bit == 0 || bit == 1) && n != -1 && !q)
-  {
-    if (bit == 0)
-      printf("C %ld\n", r);
+  scanf("%d", bit);
+  if (n != -1 && !q)
+  { 
+    if (calculaXB(xb, n, r, s, bit))
+      printf("C %ld\n", *xb);
     else
-    {
-      xb = multMod(r, s, n);
-      printf("C %ld\n", xb);
-    }
-    return 1;
+      printf("E\n");
   }
   else
     printf("E\n");
-
-  return 0;
+  *q = 1;
 }
