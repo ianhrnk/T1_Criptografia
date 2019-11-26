@@ -32,18 +32,15 @@ void fabioPreparar(long int n, long int* r, long int* x)
   }
 }
 
-int fabioResponder(long int* xb, long int n, long int s, long int r, int* q)
+void fabioResponder(long int* xb, long int n, long int s, long int r, int q)
 {
   int bit;
-  scanf("%d", bit);
-  if (n != -1 && !q)
+  scanf("%d", &bit);
+  if ((bit == 0 || bit == 1) && n != -1 && !q)
   { 
-    if (calculaXB(xb, n, r, s, bit))
-      printf("C %ld\n", *xb);
-    else
-      printf("E\n");
+    calculaXB(xb, n, r, s, bit);
+    printf("C %ld\n", *xb);
   }
   else
     printf("E\n");
-  *q = 1;
 }

@@ -16,7 +16,7 @@ long int multMod(long int, long int, long int);
 int verificarCongruencia(long int, long int, long int);
 // Gera r e calcula x a partir de r e n.
 int calculaX(long int, long int*, long int*);
-// Calcula xb
-int calculaXB(long int*, long int, long int, long int, int);
+// Calcula xb e retorna o valor do bit.
+void calculaXB(long int*, long int, long int, long int, int);
 
 #endif

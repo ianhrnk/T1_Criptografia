@@ -4,11 +4,7 @@
 #include "fabio.h"
 #include "patricia.h"
 #include "teodoro.h"
-#include "ester.h"
-
-// p e q = 2^32 - 1 | tipo int
-// demais valores = 2^64 - 1 | tipo long int %li
-// P/ operacoes como multiplicacoes modulares = 2^127 - 1 | tipo __uint128_t 
+#include "ester.h" 
 
 /*//////////////////////////////////////////////////////////////////
 //  IMPORTANTE: COMENTAR O CODIGO
@@ -69,7 +65,10 @@ int main(int argc, char **argv)
         }
 
         else if (tarefa == 'R')
-          fabioResponder(&xb, n, s, r, &q);
+        {
+          fabioResponder(&xb, n, s, r, q);
+          q = 1;  // Respondeu.
+        }
 
         else if (tarefa == 'T')
           printf("C\n");

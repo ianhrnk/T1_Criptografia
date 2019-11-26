@@ -107,16 +107,10 @@ int calculaX(long int n, long int* r, long int* x)
   }  
 }
 
-int calculaXB(long int *xb, long int n, long int s, long int r, int bit)
+void calculaXB(long int* xb, long int n, long int r, long int s, int bit)
 {
-  if (bit == 0 || bit == 1)
-  {
-    if (bit == 0)
-      *xb = r;
-    else
-      *xb = multMod(r, s, n);
-    return 1;
-  }
-
-  return 0;
+  if (bit == 0)
+    *xb = r;
+  else
+    *xb = multMod(r, s, n);
 }
