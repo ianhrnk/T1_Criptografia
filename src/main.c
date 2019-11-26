@@ -24,8 +24,8 @@ int main(int argc, char **argv)
 
   int p, q = 0,                         t, b, i;
   long int n = -1, s = -1, v = -1,      x, r, xb;
-
-  // Teodoro - p, q, n, s, v.
+  // Teodoro - n, s, v.
+  // Fabio -   p, q, n, s, v, x, r, xb
 
   switch(*argv[1])
   {
@@ -36,13 +36,10 @@ int main(int argc, char **argv)
 				
         if (tarefa == 'I')
           teodoroInicializar(&n);
-
         else if (tarefa == 'A')
           teodoroAutenticar(n, &s, &v);
-
         else if (tarefa == 'F')
           teodoroForjar(n, &v);
-          
         else if (tarefa == 'T')
           printf("C\n");
       }
@@ -53,60 +50,20 @@ int main(int argc, char **argv)
       {
         scanf("%c", &tarefa);
         
-        // Identificar - verificar se n | s^2*v - 1
         if (tarefa == 'I')
+          fabioIdentificar(&n, &s, &v);
+        else if (tarefa == 'X')
         {
-          scanf("%ld %ld %ld", &n, &s, &v);
-          if (fabioIdentificar(n, s, v))
-            printf("C\n");
-          else
-            printf("E\n");					
-        }
-
-        // Iniciar - Gerar r e computar x.
-        if (tarefa == 'X')
-        {
-          if (n != -1)
-          {
-            x = fabioIniciar(n, &r);
-            printf("C %ld\n", x);
-          }
-          else
-            printf("E\n");
+          fabioIniciar(n, &r, &x);
           q = 0;  // Nao respondeu.           
         }
-
-        // Preparar - Computar x com r dado.
-        if (tarefa == 'P')
+        else if (tarefa == 'P')
         {
-          scanf("%ld", &r);
-          if (n != -1)
-          {
-            x = fabioPreparar(n, r);
-            printf("C %ld\n", x);
-          }
-          else
-            printf("E\n");
-
+          fabioPreparar(n, &r, &x);  
           q = 0;  // Nao respondeu.
         }
-
-        // Responder - Imprimir xb = r se b = 0 | xb = rs (mod n) se b = 1.
-        if (tarefa == 'R')
-        {
-          scanf("%d", &p);
-          
-          if ((p == 0 || p == 1) && n != -1 && !q)
-          {
-            xb = fabioResponder(n, s, r, p);
-            q = 1;  // Respondeu.
-            printf("C %ld\n", xb);
-          }
-          else
-            printf("E\n");                    
-        }
-
-        // Terminar
+        else if (tarefa == 'R')
+          q = fabioResponder(n, s, r, q);
         else if (tarefa == 'T')
           printf("C\n");
       }
@@ -176,7 +133,7 @@ int main(int argc, char **argv)
           printf("C\n");
       }
       break;
-
+    /*
     case 'E':
       while (tarefa != 'T')
       {
@@ -208,7 +165,7 @@ int main(int argc, char **argv)
         else if (tarefa == 'T')
           printf("C\n");
       }
-      break;
+      break;*/
   }
 
   return 0;

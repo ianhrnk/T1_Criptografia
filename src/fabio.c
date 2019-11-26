@@ -1,40 +1,64 @@
+#include <stdio.h>
 #include "fabio.h"
 #include "auxiliar.h"
 
-int fabioIdentificar(long int n, long int s, long int v)
+void fabioIdentificar(long int* n, long int* s, long int* v)
 {
-  if (verificarCongruencia(n, s, v))
-    return 1;
-  return 0;
+  scanf("%ld %ld %ld", n, s, v);
+  if (verificarCongruencia(*n, *s, *v))
+    printf("C\n");
+  else
+    printf("E\n");
 }
 
-long int fabioIniciar(long int n, long int* r)
+void fabioIniciar(long int n, long int* r, long int* x)
 {
-  *r = gerarNumAleatorio(1, n+1);
-  long int temp;
-
-  while (mdc(n, *r) != 1)
-    *r = gerarNumAleatorio(1, n+1);
-
-  temp = multMod(*r, *r, n);
-  return temp;
-}
-
-long int fabioPreparar(long int n, long int r)
-{
-  long int temp = multMod(r, r, n);
-  return temp;
-}
-
-long int fabioResponder(long int n, long int s, long int r, int b)
-{
-  long int xb;
-
-  if (b == 0)
-    return r;
+  if (n == -1)
+    printf("E\n");
   else
   {
-    xb = multMod(r, s, n);
-    return xb;
-  }  
+    *r = gerarNumAleatorio(1, n+1);
+
+    while (mdc(n, *r) != 1)
+      *r = gerarNumAleatorio(1, n+1);
+
+    *x = multMod(*r, *r, n);
+    printf("C %ld\n", *x);
+  }   
+}
+
+void fabioPreparar(long int n, long int* r, long int* x)
+{
+  scanf("%ld", r);
+
+  if (n == -1 || *r < 1 || *r > n || mdc(n, *r) != 1)
+    printf("E\n");
+  else
+  {
+   *x = multMod(*r, *r, n);
+    printf("C %ld\n", *x); 
+  }
+}
+
+int fabioResponder(long int n, long int s, long int r, int q)
+{
+  long int xb;
+  int bit;
+  scanf("%d", &bit);
+
+  if ((bit == 0 || bit == 1) && n != -1 && !q)
+  {
+    if (bit == 0)
+      printf("C %ld\n", r);
+    else
+    {
+      xb = multMod(r, s, n);
+      printf("C %ld\n", xb);
+    }
+    return 1;
+  }
+  else
+    printf("E\n");
+
+  return 0;
 }
