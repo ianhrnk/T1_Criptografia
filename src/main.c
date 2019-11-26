@@ -18,7 +18,7 @@ int main(int argc, char **argv)
   srand(time(NULL));
   char tarefa = 'X';
 
-  int p, q = 0,                         t, b, i;
+  int p, q = 0,                         t, b, i, bit;
   long int n = -1, s = -1, v = -1,      x, r, xb;
   // Teodoro - n, s, v.
   // Fabio -   p, q, n, s, v, x, r, xb
@@ -74,7 +74,7 @@ int main(int argc, char **argv)
           printf("C\n");
       }
       break;
-    /*
+    
     case 'P':
       while (tarefa != 'T')
       {
@@ -85,44 +85,21 @@ int main(int argc, char **argv)
 
         else if (tarefa == 'Q')
         {
-          scanf("%ld", &x);
-
-          if (!q) // Se nao recebeu.
-          {
-            p = patriciaRCompromisso();
-            q = 1;
-            printf("C %d\n", p);
-          }
-          else
-            printf("E\n");          
+          patriciaRCompromisso(&x, &bit, q);
+          q = 1;
         }
 
-        // Validar resposta 
         else if (tarefa == 'V')
         {
           scanf("%ld", &xb);
-          i--;
-          if (patriciaValidar(xb, x, v, n, p))
-            printf("C %d\n", i);
-          else
-            printf("E %d\n", i);     
+          patriciaValidar(xb, x, v, n, bit, &i, t);
           q = 0;  // Nao recebeu.   
         }
 
-        // Testar compromisso
         else if (tarefa == 'C')
         {
-          scanf("%ld %d %ld", &x, &p, &xb);
-          if (patriciaValidar(xb, x, v, n, p))
-          {
-            i--;
-            printf("C %d\n", i);
-          }
-          else
-          {
-            printf("E %d\n", i);
-            i = t;
-          }
+          scanf("%ld %d %ld", &x, &bit, &xb);
+          patriciaValidar(xb, x, v, n, bit, &i, t);
         }
 
         // Terminar
@@ -130,7 +107,7 @@ int main(int argc, char **argv)
           printf("C\n");
       }
       break;
-    
+    /*
     case 'E':
       while (tarefa != 'T')
       {
@@ -147,7 +124,7 @@ int main(int argc, char **argv)
           scanf("%ld %ld", &r, &xb);
           //TODO: Terminar de implementar
           // gerar numeros que passem no teste de verificação
-          // da Patricia. (x | v*s² - x)        
+          // da Patricia. (n | v*s² - x)        
         }        
 
         // Terminar

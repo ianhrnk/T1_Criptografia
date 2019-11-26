@@ -13,29 +13,30 @@ void patriciaInicializar(long int* n, long int* v, int* t, int* i)
     printf("C\n");
 }
 
-int patriciaRCompromisso(void)
+void patriciaRCompromisso(long int* x, int* bit, int q)
 {
-  return rand() % 2;
+  if (!q)
+  {
+    scanf("%ld", x);
+    *bit = rand() % 2;
+    printf("C %d\n", *bit);
+  }
+  else
+    printf("E\n");  
 }
 
-int patriciaValidar(long int xb, long int x, long int v, long int n, int p)
+
+int patriciaValidar(long int xb, long int x, long int v, long int n, int bit, int* i, int t)
 {
-  long int temp;
-
-  if (p == 0)
+  if (*i != 0 && verificarXB(xb, x, n, v, bit))
   {
-    temp = multMod(xb, xb, n);
-    temp -= x;
+    *i = *i - 1;
+    printf("C %d\n", *i);
   }
   else
   {
-    temp = multMod(xb, xb, n);
-    temp = multMod(temp, v, n);
-    temp -= x;
+    printf("E %d\n", *i);
+    if (*i != 0)
+      *i = t;
   }
-
-  if (temp == 0)
-    return 1;
-  else
-    return 0;
 }

@@ -114,3 +114,25 @@ void calculaXB(long int* xb, long int n, long int r, long int s, int bit)
   else
     *xb = multMod(r, s, n);
 }
+
+int verificarXB(long int xb, long int x, long int n, long int v, int bit)
+{
+  long int temp;
+
+  if (bit == 0)
+  {
+    temp = multMod(xb, xb, n);
+    temp -= x;
+  }
+  else
+  {
+    temp = multMod(xb, xb, n);
+    temp = multMod(temp, v, n);
+    temp -= x;
+  }
+
+  if (temp == 0)
+    return 1;
+  else    
+    return 0;
+}

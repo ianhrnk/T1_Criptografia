@@ -18,5 +18,7 @@ int verificarCongruencia(long int, long int, long int);
 int calculaX(long int, long int*, long int*);
 // Calcula xb e retorna o valor do bit.
 void calculaXB(long int*, long int, long int, long int, int);
+// Verifica xb de acordo com o bit 0 ou 1
+int verificarXB(long int, long int, long int, long int, int);
 
 #endif
