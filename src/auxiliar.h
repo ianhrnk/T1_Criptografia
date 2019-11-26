@@ -2,7 +2,7 @@
 #define AUXILIAR
 
 // Algoritmo de euclides estendido que retorna o valor do inverso 
-// multiplicativo de b^2 no modulo a.
+// multiplicativo de b no modulo a.
 long int euclides(long int, long int);
 // Função que retorna um número aleatório entre a e n-1.
 long int gerarNumAleatorio(long int, long int);
@@ -18,7 +18,7 @@ int verificarCongruencia(long int, long int, long int);
 int calculaX(long int, long int*, long int*);
 // Calcula xb e retorna o valor do bit.
 void calculaXB(long int*, long int, long int, long int, int);
-// Verifica xb de acordo com o bit 0 ou 1
+// Verifica xb de acordo com o bit 0 ou 1.
 int verificarXB(long int, long int, long int, long int, int);
 
 #endif

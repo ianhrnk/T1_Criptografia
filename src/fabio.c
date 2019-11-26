@@ -13,7 +13,7 @@ void fabioIdentificar(long int* n, long int* s, long int* v)
 
 void fabioIniciar(long int n, long int* r, long int* x)
 {
-  if (calculaX(n, r, x))
+  if (n != -1 && calculaX(n, r, x))
     printf("C %ld\n", *x);
   else
     printf("E\n");

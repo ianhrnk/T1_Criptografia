@@ -17,7 +17,7 @@ void teodoroAutenticar(long int n, long int* s, long int* v)
   else
   { 
     *s = gerarNumAleatorio(2, n);
-    *v = euclides(n, *s);
+    *v = euclides(n, (*s)*(*s));
     printf("C %ld %ld\n", *v, *s); 
   }
 }
@@ -29,7 +29,7 @@ void teodoroForjar(long int n, long int* v)
 
   if (s > 1 && s < n)
   {
-    temp = euclides(n, s);
+    temp = euclides(n, s*s);
     if (verificarCongruencia(n, s, temp))
     {
       *v = temp;

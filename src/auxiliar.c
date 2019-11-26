@@ -3,7 +3,7 @@
 
 long int euclides(long int a, long int b)
 {
-  __int128_t d1 = b*b, t1 = 1, s1 = 0, d2 = a, t2 = 0, s2 = 1, temp = 0;
+  __int128_t d1 = b, t1 = 1, s1 = 0, d2 = a, t2 = 0, s2 = 1, temp = 0;
 
   while (d1 != 0 && d2 != 0)
   {

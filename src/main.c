@@ -6,22 +6,12 @@
 #include "teodoro.h"
 #include "ester.h" 
 
-/*//////////////////////////////////////////////////////////////////
-//  IMPORTANTE: COMENTAR O CODIGO
-//              Caso os argumentos estejam invalidos ou nao identificados
-//              deve-se retornar E.
-//              Corrigir excesso de variaveis na main.
-//////////////////////////////////////////////////////////////////*/
-
 int main(int argc, char **argv)
 {	
   srand(time(NULL));
   char tarefa = 'X';
-
-  int p, q = 0,                         t, b, i, bit;
-  long int n = -1, s = -1, v = -1,      x, r, xb;
-  // Teodoro - n, s, v.
-  // Fabio -   p, q, n, s, v, x, r, xb
+  int q = 0, t, i, bit;
+  long int n = -1, s = -1, v = -1, x, r, xb;
 
   switch(*argv[1])
   {
@@ -86,28 +76,28 @@ int main(int argc, char **argv)
         else if (tarefa == 'Q')
         {
           patriciaRCompromisso(&x, &bit, q);
-          q = 1;
+          q = 1;  // Recebeu.
         }
 
         else if (tarefa == 'V')
         {
           scanf("%ld", &xb);
           patriciaValidar(xb, x, v, n, bit, &i, t);
-          q = 0;  // Nao recebeu.   
+          q = 0;  // Nao recebeu.
         }
 
         else if (tarefa == 'C')
         {
           scanf("%ld %d %ld", &x, &bit, &xb);
           patriciaValidar(xb, x, v, n, bit, &i, t);
+          q = 0;  // Nao recebeu.
         }
 
-        // Terminar
         else if (tarefa == 'T')
           printf("C\n");
       }
       break;
-    /*
+    
     case 'E':
       while (tarefa != 'T')
       {
@@ -117,21 +107,15 @@ int main(int argc, char **argv)
           esterInicializar(&n, &v);
 
         else if (tarefa == 'P')
-          esterPreparar(&bit, &x, &xb);
+          esterPreparar(&bit, &x, &xb, n, v);
 
         else if (tarefa == 'S')
-        {
-          scanf("%ld %ld", &r, &xb);
-          //TODO: Terminar de implementar
-          // gerar numeros que passem no teste de verificação
-          // da Patricia. (n | v*s² - x)        
-        }        
+          esterSorte(&r, &xb, n);
 
-        // Terminar
         else if (tarefa == 'T')
           printf("C\n");
       }
-      break;*/
+      break;
   }
 
   return 0;
