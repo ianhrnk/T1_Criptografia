@@ -10,7 +10,7 @@ long int gerarNumAleatorio(long int, long int);
 void swap(__int128_t*, __int128_t*);
 // Retorna o mdc(a,b) | Obs: (a >= b)
 int mdc(long int, long int);
-// Calcula a*b mod n. Usado em fabio.c e na funcao verificarCongruencia.
+// Calcula a*b mod n.
 long int multMod(long int, long int, long int);
 // Verifica se s^2*v é congruente a 1 mod n.
 int verificarCongruencia(long int, long int, long int);
