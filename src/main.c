@@ -21,8 +21,11 @@ int main(int argc, char **argv)
 {	
   srand(time(NULL));
   char tarefa = 'X';
-  int p, q = 0, t, b, i;
-  long int n = -1, s = -1, v = -1, x, r, xb;
+
+  int p, q = 0,                         t, b, i;
+  long int n = -1, s = -1, v = -1,      x, r, xb;
+
+  // Teodoro - p, q, n, s, v.
 
   switch(*argv[1])
   {
@@ -31,34 +34,15 @@ int main(int argc, char **argv)
       {
         scanf("%c", &tarefa);
 				
-        // Inicializar - Calcular n = pq
         if (tarefa == 'I')
-        {
-          scanf("%d %d", &p, &q);
-          n = teodoroInicializar(p, q);
-          printf("C %ld\n", n);
-        }
+          teodoroInicializar(&n);
 
-        // Autenticar - gerar v (publico) e s (privado)
         else if (tarefa == 'A')
-        {
           teodoroAutenticar(n, &s, &v);
-          printf("C %ld %ld\n", v, s);
-        }
 
-        // Forjar - recebe s e calcula v correspondente
         else if (tarefa == 'F')
-        {
-          scanf("%ld", &s);
-          v = teodoroForjar(n, s);
-
-          if (v != 0)
-            printf("C %ld\n", v);
-          else
-            printf("E\n");          
-        }
-
-        // Terminar
+          teodoroForjar(n, &v);
+          
         else if (tarefa == 'T')
           printf("C\n");
       }

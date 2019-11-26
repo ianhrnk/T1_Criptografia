@@ -1,23 +1,46 @@
+#include <stdio.h>
 #include "teodoro.h"
 #include "auxiliar.h"
 
-long int teodoroInicializar(int p, int q)
+void teodoroInicializar(long int* n)
 {
-  return (long int) p*q;
+  int p, q;
+  scanf("%d %d", &p, &q);
+  *n = (long int) p*q;
+  printf("C %ld\n", *n);
 }
 
 void teodoroAutenticar(long int n, long int* s, long int* v)
 {
-  *s = gerarNumAleatorio(2, n);
-  *v = euclides(n, *s);
+  if (n == -1)
+    printf("E\n");
+  else
+  { 
+    *s = gerarNumAleatorio(2, n);
+    *v = euclides(n, *s);
+    printf("C %ld %ld\n", *v, *s); 
+  }
 }
 
-long int teodoroForjar(long int n, long int s)
+void teodoroForjar(long int n, long int* v)
 {
-  long int temp = euclides(n, s);
-  
-  if (verificarCongruencia(n, s, temp))
-    return temp;
+  long int s, temp;
+  scanf("%ld", &s);
+
+  if (s > 1 && s < n)
+  {
+    temp = euclides(n, s);
+    if (verificarCongruencia(n, s, temp))
+    {
+      *v = temp;
+      printf("C %ld\n", *v);
+    }
+    else  // Caso nao tenha inverso multiplicativo.
+    {
+      *v = -1;
+      printf("E\n");
+    }
+  }
   else
-    return 0;
+    printf("E\n");  
 }
